@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { search } from '../actions';
+import { connect } from 'react-redux';
 
-const SearchForm = () => {
+const SearchForm = props => {
     const [anime, setAnime] = useState('');
 
     const animeInput = e => {
@@ -9,6 +11,8 @@ const SearchForm = () => {
 
     const submitAnime = e => {
         e.preventDefault();
+        props.search(anime);
+        setAnime('');
     }
 
     return(
@@ -19,4 +23,4 @@ const SearchForm = () => {
     )
 }
 
-export default SearchForm;
+export default connect(null, {search})(SearchForm);

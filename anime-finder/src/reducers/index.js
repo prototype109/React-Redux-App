@@ -9,7 +9,7 @@ const animeReducer = (state = initialState, action) => {
         case NEW_SEARCH_REQUEST:
             return {
                 ...state,
-                animeList: action.paylod
+                animeList: action.payload
             }
         default:
             return state;
