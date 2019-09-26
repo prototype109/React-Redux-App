@@ -7,7 +7,7 @@ export const FETCHING_REQUEST = 'FETCHING_REQUEST'
 
 export const search = (animeName) => dispatch => {
     dispatch({type: FETCHING_REQUEST});
-    axios.get(`https://api.jikan.moe/v3/search/anime?q=${animeName}&limit=10`)
+    axios.get(`https://api.jikan.moe/v3/search/anime?q=${animeName}&limit=20`)
         .then(res => {
             console.log('RES', res);
             dispatch({type: NEW_SEARCH_REQUEST, payload: res.data.results});
