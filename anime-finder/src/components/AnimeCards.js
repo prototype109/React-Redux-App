@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import AnimeCard from './AnimeCard';
 
 const AnimeCards = props => {
-    console.log('ANIME_LIST: ', props.list);
     return(
+        props.error ? <h1>Anime appears to not exist</h1> :
+        props.fetching ? <h1>Fetching Anime...</h1> :
         <div>
             {props.list.map(anime => {
                 return <AnimeCard key={anime.mal_id} anime={anime} />
@@ -15,7 +16,9 @@ const AnimeCards = props => {
 
 const mapStateToProps = state => {
     return{
-        list: state.animeList
+        list: state.animeList,
+        error: state.error,
+        fetching: state.isFetching
     }
 }
 

@@ -1,7 +1,9 @@
-import { NEW_SEARCH_REQUEST } from '../actions';
+import { NEW_SEARCH_REQUEST, ERROR, FETCHING_REQUEST } from '../actions';
 
 const initialState = {
-    animeList: []
+    animeList: [],
+    error: false,
+    isFetching: false
 }
 
 const animeReducer = (state = initialState, action) => {
@@ -9,7 +11,19 @@ const animeReducer = (state = initialState, action) => {
         case NEW_SEARCH_REQUEST:
             return {
                 ...state,
-                animeList: action.payload
+                animeList: action.payload,
+                error: false,
+                isFetching: false
+            }
+        case ERROR:
+            return{
+                ...state,
+                error: true
+            }
+        case FETCHING_REQUEST:
+            return{
+                ...state,
+                isFetching: true
             }
         default:
             return state;
