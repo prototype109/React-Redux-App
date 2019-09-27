@@ -18,6 +18,7 @@ const animeReducer = (state = initialState, action) => {
         case ERROR:
             return{
                 ...state,
+                isFetching: false,
                 error: true
             }
         case FETCHING_REQUEST:

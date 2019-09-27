@@ -10,7 +10,10 @@ export const search = (animeName) => dispatch => {
     axios.get(`https://api.jikan.moe/v3/search/anime?q=${animeName}&limit=20`)
         .then(res => {
             console.log('RES', res);
-            dispatch({type: NEW_SEARCH_REQUEST, payload: res.data.results});
+            if(res.data.results.length === 0)
+                dispatch({type: ERROR});
+            else
+                dispatch({type: NEW_SEARCH_REQUEST, payload: res.data.results});
         })
         .catch(err => {
             console.log('ERR', err);
