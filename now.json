@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "name": "anime-finder",
+    "builds": [{ "src": "anime-finder/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
+    "routes": [
+        { "src": "/(.*)", "dest": "anime-finder/$1" }
+    ]
+}
